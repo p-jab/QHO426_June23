@@ -1,32 +1,23 @@
-class Human:
-    MAX_ENERGY = 100
+from inhabitant import Inhabitant
+
+class Human(Inhabitant):
 
     def __init__(self, n="Human", a=0):
-        self.name = n
-        self.age = a
-        self.energy = Human.MAX_ENERGY
+        super().__init__(n, a)
+        self.clothing = []
 
     def __str__(self):
         return f"Human called {self.name} is {self.age} years old and has {self.energy} energy"
 
     def __repr__(self):
-        return f"Human(name={self.name}, age={self.age}, energy={self.energy})"
+        return f"Human(name={self.name}, age={self.age}, energy={self.energy}, clothing={self.clothing})"
 
-    def display(self):
-        print(f"I am {self.name}")
+    def dress(self, clothing):
+        self.clothing.append(clothing)
 
-    def grow(self):
-        self.age += 1
-
-    def eat(self, amount):
-        self.energy += amount
-        if self.energy > Human.MAX_ENERGY:
-            self.energy = Human.MAX_ENERGY
-
-    def move(self, distance):
-        self.energy -= distance
-        if self.energy < 0:
-            self.energy = 0
+    def undress(self, clothing):
+        if clothing in self.clothing:
+            self.clothing.remove(clothing)
 
 if __name__ == "__main__":
     h = Human()

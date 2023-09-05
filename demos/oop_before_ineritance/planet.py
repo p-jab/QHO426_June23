@@ -5,27 +5,27 @@ class Planet:
 
     def __init__(self, n="Planet"):
         self.name = n
-        self.inhabitants = []
+        self.inhabitants = {"humans":[], "robots":[]}
 
     def __str__(self):
-        x=[]
-        y=[]
-        for dude in self.inhabitants:
-            if isinstance(dude, Human):
-                x.append(dude)
-            elif isinstance(dude, Robot):
-                y.append(dude)
+        x = [name for name in self.inhabitants["humans"]]
+        y = [name for name in self.inhabitants["robots"]]
         return f"{self.name} contains: \nHumans: {x}\nRobots: {y}\n\n"
 
     def __repr__(self):
         return f"Planet(name={self.name}, inhabitants={self.inhabitants})"
 
-    def add(self, inh):
-        self.inhabitants.append(inh)
+    def add_inhabitant(self, inh):
+        if isinstance(inh, Human):
+            self.inhabitants["humans"].append(inh)
+        elif isinstance(inh, Robot):
+            self.inhabitants["robots"].append(inh)
 
-    def remove(self, inh):
-        if inh in self.inhabitants:
-            self.inhabitants.remove(inh)
+    def remove_inhabitant(self, inh):
+        if inh in self.inhabitants["humans"]:
+            self.inhabitants["humans"].remove(inh)
+        elif inh in self.inhabitants["robots"]:
+            self.inhabitants["robots"].remove(inh)
 
 
 if __name__ == "__main__":
