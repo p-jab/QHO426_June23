@@ -1,4 +1,5 @@
 from inhabitant import Inhabitant
+from clothing import Clothing
 
 class Human(Inhabitant):
 
@@ -7,7 +8,7 @@ class Human(Inhabitant):
         self.clothing = []
 
     def __str__(self):
-        return f"Human called {self.name} is {self.age} years old and has {self.energy} energy"
+        return f"Human called {self.name} is {self.age} years old and has {self.energy} energy. They wear {self.clothing}"
 
     def __repr__(self):
         return f"Human(name={self.name}, age={self.age}, energy={self.energy}, clothing={self.clothing})"
@@ -29,4 +30,7 @@ if __name__ == "__main__":
     h.move(56)
     print(h)
     h.eat(20)
+    print(h)
+    trousers = Clothing(material="jeans")
+    h.dress(trousers)
     print(h)

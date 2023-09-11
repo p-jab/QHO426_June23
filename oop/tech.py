@@ -6,6 +6,6 @@ class Tech(ABC):
     def activate(self):
         pass
 
-
-t = Tech()
-t.activate()
+    @abstractmethod
+    def deactivate(self):
+        pass
